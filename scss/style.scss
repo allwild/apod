@@ -1,0 +1,164 @@
+body, html {
+  margin: 0;
+  
+}
+
+* {
+  font-family: 'Titillium Web', sans-serif;
+}
+
+body {
+  /* background-color: rgb(241, 241, 241); */
+  background-image: url(../img/s1.jpg);
+  height: 100%; 
+}
+
+main {
+  padding: 20px;
+}
+
+header {
+  position: fixed;
+  width: 100%;
+  height: 7rem;
+  background-color: rgb(31, 31, 31);
+  color: white;
+  font-size: 1.47em;
+
+  ul {
+
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+
+    li {
+      list-style: none;
+  
+      img {
+        width: 100px;
+      }
+  
+      a {
+        color: white;
+        text-decoration: none;
+      }
+    }
+  }
+
+}
+
+main {
+
+  display: flex;
+  gap: 20px;
+
+  #apod {
+    display: inline-block;
+    width: 40%;
+    background-color: rgb(173, 173, 173);
+    padding: 20px;
+
+    h1 {
+      margin: 0 auto;
+      padding-top: 12rem;
+    }
+
+    img, iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      margin-top: 20px;
+    }
+
+    #date {
+      margin-top: 10px;
+    }
+  }
+
+  #gallery-wrapper {
+    display: inline-block;
+    width: 55%;
+    margin-top: 10.8rem;
+    padding: 20px;
+
+    h1 {
+      padding: 0 20px;
+      background-color: rgb(173, 173, 173);
+      margin-bottom: 20px;
+    }
+    
+    
+    #pic-wrapper {
+      display: flex;
+      gap: 10px;
+      justify-content: space-around;
+      
+      flex-wrap: wrap;
+      background-color: rgb(173, 173, 173);
+      padding: 20px;
+    }
+  }
+}
+
+.gallery-pic {
+  width: 200px;
+  height: 200px;
+  border: none;
+  flex-grow: 1;
+
+  &:hover {
+    animation: grow 0.3s forwards;
+    cursor: pointer;
+  }
+
+  @keyframes grow {
+    from {
+      opacity: 1;
+    }
+
+    to {
+      opacity: 0.5;
+    }
+  }
+
+  
+}
+
+#modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 9999;
+  color: white;
+  overflow: scroll;
+
+  img {
+    max-width: 80%;
+    max-height: 80%;
+  }
+
+  >i {
+    color: white;
+    position: fixed;
+    top: 30px;
+    right: 30px;
+  }
+
+  >p {
+    width: 55%;
+  }
+}
+
+#esc-X {
+
+  &:hover {
+    cursor: pointer;
+  }
+}
