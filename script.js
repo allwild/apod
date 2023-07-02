@@ -1,6 +1,6 @@
 const fs = require('fs');
 const body = document.querySelector("body");
-const API_KEY = "DEMO"
+const API_KEY = "DEMO_KEY"
 let link =
   `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}`;
 
