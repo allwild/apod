@@ -1,6 +1,6 @@
 const fs = require('fs');
 const body = document.querySelector("body");
-const API_KEY = fs.readFileSync('api_key.txt', 'utf8').trim();;
+const API_KEY = "DEMO"
 let link =
   `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}`;
 
