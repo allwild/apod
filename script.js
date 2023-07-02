@@ -1,4 +1,3 @@
-const fs = require('fs');
 const body = document.querySelector("body");
 const API_KEY = "DEMO_KEY"
 let link =
