@@ -1,5 +1,5 @@
 const body = document.querySelector("body");
-const API_KEY = 'DEMO_KEY'
+const API_KEY = process.env.API_KEY;
 let link =
   `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}`;
 
@@ -149,6 +149,7 @@ function createModal () {
   });
 }
 
+console.log(API_KEY)
 
 addFrame();
 callFetch(link);
