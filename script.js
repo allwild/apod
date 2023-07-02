@@ -145,8 +145,6 @@ function createModal () {
   });
 }
 
-/* Gyááááj */
-
 
 addFrame();
 callFetch(link);
