@@ -1,5 +1,5 @@
 const body = document.querySelector("body");
-const API_KEY = "DEMO_KEY"
+const API_KEY = process.env.API_KEY
 let link =
   `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}`;
 
@@ -79,15 +79,19 @@ function callFetch(link) {
 }
 
 function getTodayDate(i) {
-  var d = new Date(),
-      month = '' + (d.getMonth() + 1),
-      day = '' + (d.getDate() - i),
-      year = d.getFullYear();
+  var d = new Date();
+  d.setDate(d.getDate() - i);
 
-  if (month.length < 2) 
-      month = '0' + month;
-  if (day.length < 2) 
-      day = '0' + day;
+  var month = '' + (d.getMonth() + 1);
+  var day = '' + d.getDate();
+  var year = d.getFullYear();
+
+  if (month.length < 2) {
+    month = '0' + month;
+  }
+  if (day.length < 2) {
+    day = '0' + day;
+  }
 
   return [year, month, day].join('-');
 }
