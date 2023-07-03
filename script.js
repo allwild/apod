@@ -24,7 +24,7 @@ function addMedia(data) {
 
 /* addInputListener */
 function addEventListener() {
-  const dateSelector = document.querySelector("#date");
+  const dateSelector = document.querySelector("#myDateInput");
   const apod = document.querySelector("#apod")
   dateSelector.addEventListener("input", function () {
     
@@ -60,7 +60,7 @@ function handlePictureData (picData) {
     <div id="apod">
         <h1 id="title">${picData.title}</h1>
         <caption>${picData.explanation}</caption></br>
-        <span><b>See earlier images: </b></span><input type="date" id="date"> 
+        <span><b>See earlier images: </b></span><input type="date" id="myDateInput"> 
     </div>  
   `
   )
