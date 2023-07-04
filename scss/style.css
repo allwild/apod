@@ -4,13 +4,13 @@ body, html {
 
 * {
   font-family: "Titillium Web", sans-serif;
+  box-sizing: border-box;
 }
 
 body {
   /* background-color: rgb(241, 241, 241); */
   background-image: url(../img/s1.jpg);
   height: 100%;
-  position: relative;
 }
 
 main {
@@ -122,7 +122,7 @@ main #gallery-wrapper #pic-wrapper {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
+  width: 100% !important;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -132,6 +132,10 @@ main #gallery-wrapper #pic-wrapper {
   z-index: 9999;
   color: white;
   overflow: scroll;
+  padding: 20px;
+}
+#modal-container h1 {
+  text-align: center;
 }
 #modal-container img {
   max-width: 80%;
@@ -139,12 +143,12 @@ main #gallery-wrapper #pic-wrapper {
 }
 #modal-container > i {
   color: white;
-  position: fixed;
+  position: absolute;
   top: 30px;
   right: 30px;
 }
 #modal-container > p {
-  width: 90%;
+  width: 100% !important;
 }
 
 #esc-X:hover {
