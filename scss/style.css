@@ -49,15 +49,14 @@ main #apod {
   display: inline-block;
   width: 40%;
   background-color: rgb(173, 173, 173);
-  padding: 20px;
+  padding: 15px;
 }
 main #apod h1 {
   margin: 0 auto;
-  padding-top: 12rem;
+  padding-top: 6.2rem;
 }
 main #apod img, main #apod iframe {
   width: 100%;
-  height: 100%;
   border: none;
   margin-top: 20px;
 }
@@ -72,7 +71,7 @@ main #apod #date {
 main #gallery-wrapper {
   display: inline-block;
   width: 55%;
-  margin-top: 10.8rem;
+  margin-top: 6rem;
 }
 main #gallery-wrapper h1 {
   padding: 0 20px;

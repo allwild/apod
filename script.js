@@ -1,41 +1,58 @@
 const body = document.querySelector("body");
-const API_KEY = "DEMO_KEY";
+const API_KEY = "VxQ74EyGWfFeQPFrFPLyVKGH5OwRK523uUmpI5cY";
 let link =
   `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}`;
 
 
-
+/* Adds img or video to the APOD section based on the fetched data */
 function addMedia(data) {
   let title = document.querySelector("#title");
   if (data.media_type === "video") {
     title.insertAdjacentHTML(
-      "beforeend",
+      "afterend",
       `
     </br><iframe id="pod" src="${data.url}"></iframe></br>
     `
     );
   } else {
     title.insertAdjacentHTML(
-      "beforeend",
+      "afterend",
       `
     </br><img id="pod" src=${data.url}></br>
     `
     );
   }
 }
+  
 
-/* addInputListener */
+/* adds an event listener to the date selector  */
 function addEventListener() {
   const dateSelector = document.querySelector("#myDateInput");
-  const apod = document.querySelector("#apod")
+  const apod = document.querySelector("#apod");
+  const image = document.querySelector("#pod");
+  const title = document.querySelector("#title");
+  const description = document.querySelector("#description");
+  
   dateSelector.addEventListener("input", function () {
-    
     let newLink = `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}&date=${this.value}`;
-    apod.remove()
-    callFetch(newLink);
+    
+    fetch(newLink)
+      .then((response) => response.json())
+      .then((data) => {
+        updateApod(data, image, title, description);        
+      });
   });
 }
 
+/* Update the APOD section based on fetched data of the selected date */
+function updateApod(data, image, title, description) {
+  title.innerHTML = data.title;
+  description.innerHTML = data.explanation;
+  image.src = data.url;
+} 
+
+
+/* Creates a scaffold for the gallery  */
 function addFrame() {
   body.insertAdjacentHTML(
     "beforeend",
@@ -53,7 +70,7 @@ function addFrame() {
   );
 }
 
-
+/* Creates a scaffold for the APOD section   */
 function handlePictureData (picData) {
   const main = document.querySelector('main')
   main.insertAdjacentHTML(
@@ -61,8 +78,8 @@ function handlePictureData (picData) {
     `
     <div id="apod">
         <h1 id="title">${picData.title}</h1>
-        <caption>${picData.explanation}</caption></br>
-        <span><b>See earlier images: </b></span><input type="date" id="myDateInput"> 
+        <p id="description">${picData.explanation}</p></br>
+        <span><b>See earlier images: </b></span><form><input type="date" id="myDateInput"></form> 
     </div>  
   `
   )
@@ -98,6 +115,7 @@ function getTodayDate(i) {
   return [year, month, day].join('-');
 }
 
+/* Adds an additional section (#gallery-wrapper) for the images of the last 8 days */
 function insertGallery () {
   const link = `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}&date=`
   const main = document.querySelector('main')
