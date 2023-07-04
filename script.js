@@ -1,7 +1,7 @@
-const body = document.querySelector("body");
+const body = document.querySelector('body');
 const API_KEY = "DEMO_KEY";
-let link =
-  `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}`;
+let link = `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}`;
+
 
 function addMedia(data) {
   let title = document.querySelector("#title");
@@ -22,18 +22,6 @@ function addMedia(data) {
   }
 }
 
-/* addInputListener */
-function addEventListener() {
-  const dateSelector = document.querySelector("#myDateInput");
-  const apod = document.querySelector("#apod")
-  dateSelector.addEventListener("input", function () {
-    
-    let newLink = `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}&date=${this.value}`;
-    apod.remove()
-    callFetch(newLink);
-  });
-}
-
 function addFrame() {
   body.insertAdjacentHTML(
     "beforeend",
@@ -51,8 +39,7 @@ function addFrame() {
   );
 }
 
-
-function handlePictureData (picData) {
+function handlePictureData(picData) {
   const main = document.querySelector('main')
   main.insertAdjacentHTML(
     "afterbegin",
@@ -66,6 +53,15 @@ function handlePictureData (picData) {
   )
 }
 
+function addEventListener() {
+  const dateSelector = document.querySelector("#myDateInput");
+  const apod = document.querySelector("#apod")
+  dateSelector.addEventListener("input", function () {
+    let newLink = `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}&date=${this.value}`;
+    apod.remove()
+    callFetch(newLink);
+  });
+}
 
 function callFetch(link) {
   fetch(link)
@@ -96,7 +92,7 @@ function getTodayDate(i) {
   return [year, month, day].join('-');
 }
 
-function insertGallery () {
+function insertGallery() {
   const link = `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}&date=`
   const main = document.querySelector('main')
   main.insertAdjacentHTML('beforeend', `
@@ -122,7 +118,7 @@ function insertGallery () {
   }
 }
 
-function createModal () {
+function createModal() {
   const galleryImages = document.querySelectorAll('.gallery-pic');
   galleryImages.forEach(image => {
     image.addEventListener('click', () => {
@@ -149,9 +145,16 @@ function createModal () {
   });
 }
 
-console.log(API_KEY)
+
+
 
 addFrame();
 callFetch(link);
 insertGallery();
 setTimeout(createModal, 1000);
+
+setTimeout(() => {
+  const dateInput = document.getElementById("myDateInput");
+  flatpickr(dateInput);
+}, 500)
+
