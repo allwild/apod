@@ -155,6 +155,7 @@ function createModal () {
       <div id='modal-container'>
         <h1 id="modal-heading">${imageTitle}</h1>
         <i id="esc-X"class="fa-regular fa-circle-xmark fa-2xl"></i>
+        
         <p id="modal-caption">${imageDescription}</p>
       </div>
       `)
